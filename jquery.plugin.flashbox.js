@@ -6,8 +6,6 @@
  * @requirements: jQuery 1.7+
  * @author: Chris Markle
  *
- * @usage: $("#sel").flashBox({ backgroundColor: 'rgb(249, 206, 0)', borderColor: 'rgb(222, 184, 0)', flashes: 5, totalDuration: 4000 });
- *
  */
 (function($) {
 
