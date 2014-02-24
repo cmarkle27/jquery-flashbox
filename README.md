@@ -15,4 +15,4 @@ $("#selector").flashBox({
 ```
 
 - Very Original
-- Yes. I still use jQuery (occasionally)
+- Yes, I still use jQuery (occasionally)
