@@ -9,8 +9,10 @@ $("#selector").flashBox({
   backgroundColor: 'rgb(249, 206, 0)',
   borderColor: 'rgb(222, 184, 0)',
   color: 'rgb(256, 256, 256)',
-  flashes: 5, totalDuration: 4000
+  flashes: 5,
+  totalDuration: 4000
 });
 ```
 
 - Very Original
+- Yes. I still use jQuery (occasionally)
