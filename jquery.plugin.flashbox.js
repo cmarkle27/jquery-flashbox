@@ -11,60 +11,56 @@
  */
 (function($) {
 
-	var FlashBox = function(options, element) {
+  var FlashBox = function(options, element) {
 
-		var $element = $(element);
+    var $element = $(element);
 
-	    var originalBackgroundColor = $element.css('backgroundColor');
-	    var originalBorderColor = $element.css('borderColor');
-	    var originalColor = $element.css('color');
+      var originalBackgroundColor = $element.css('backgroundColor');
+      var originalBorderColor = $element.css('borderColor');
+      var originalColor = $element.css('color');
 
-	    var to = {
-	    	backgroundColor: options.backgroundColor,
-	    	borderColor: options.borderColor,
-	    	color: options.color,
-	    };
+      var to = {
+        backgroundColor: options.backgroundColor,
+        borderColor: options.borderColor,
+        color: options.color,
+      };
 
-	    var from = {
-	    	backgroundColor: originalBackgroundColor,
-	    	borderColor: originalBorderColor,
-	    	color: originalColor,
-	    };
+      var from = {
+        backgroundColor: originalBackgroundColor,
+        borderColor: originalBorderColor,
+        color: originalColor,
+      };
 
-	    var times = options.flashes;
-	    var interval = (options.totalDuration / times);
-	    var duration = interval / 2;
+      var times = options.flashes;
+      var interval = (options.totalDuration / times);
+      var duration = interval / 2;
 
-	    for (var i = 0; i < times; i++) {
-	    	setTimeout(function() {
-			    $element.animate(to, duration, function() {
-				    $element.animate(from, duration, function() {
-				    	if (i === 1 + times) $element.trigger("flashbox-effect-complete");
-				    });
-			    });
-	    	}, interval * i);
-		};
+      for (var i = 0; i < times; i++) {
+        setTimeout(function() {
+          $element.animate(to, duration, function() {
+            $element.animate(from, duration, function() {
+              if (i === 1 + times) $element.trigger("flashbox-effect-complete");
+            });
+          });
+        }, interval * i);
+    };
 
-	};
+  };
 
-	///////////////////////////////////////////////////////////////////////
-	// flashBox plugin
-	///////////////////////////////////////////////////////////////////////
+  $.fn.flashBox = function(options) {
 
-	$.fn.flashBox = function(options) {
+    options = $.extend({
+      backgroundColor: "#FFFFFF",
+      borderColor: "#FFFFFF",
+      color: "#FFFFFF",
+      flashes: 3,
+      totalDuration: 1500
+    }, options || {});
 
-		options = $.extend({
-			backgroundColor: "#FFFFFF",
-			borderColor: "#FFFFFF",
-			color: "#FFFFFF",
-			flashes: 3,
-			totalDuration: 1500
-		}, options || {});
+    return this.each(function() {
+      var flashBox = new FlashBox(options, this);
+    });
 
-		return this.each(function() {
-			var flashBox = new FlashBox(options, this);
-		});
+  };
 
-	};
-
-})(jQuery); 
+})(jQuery);
